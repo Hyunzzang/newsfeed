@@ -26,13 +26,13 @@ public class NewsController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity.BodyBuilder register(@RequestBody NewsRequest newsRequest) {
+  public ResponseEntity<String> register(@RequestBody NewsRequest newsRequest) {
     log.info(":: register ::");
     // todo: request 유효성 검증은 시간이 되면~
 
     newsIntegrateService.register(newsRequest);
 
-    return ResponseEntity.ok();
+    return ResponseEntity.ok("OK");
   }
 
 

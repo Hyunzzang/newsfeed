@@ -25,6 +25,7 @@ public class RelationService {
     User targetUser = userRepository.findByEmail(followRequest.getTargetEmail());
 
     // todo: user 정보가 없을 경우의 예외 상항은 시간이 되면 처리 하자.
+    // todo: 중복 제한도 처리~
 
     Friend friend = Friend.builder()
         .ownerId(ownerUser.getId())

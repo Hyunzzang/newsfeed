@@ -64,3 +64,26 @@
   * 팔로우한 유저의 뉴스 보기
   
   > [GET] /api/news/{email}
+
+
+### api 테스트 시나리오
+```
+-------- 등록 --------
+curl -X POST http://localhost:8080/api/user/join -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "email":"test@test.com", "pw":"123456" }'
+
+curl -X POST http://localhost:8080/api/user/join -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "email":"test2@test.com", "pw":"123456" }'
+
+-------- 팔로우 --------
+curl -X POST http://localhost:8080/api/relation/follow -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "myEmail":"test@test.com", "targetEmail":"test2@test.com" }'
+
+-------- 조회 --------
+curl -X GET http://localhost:8080/api/user/test@test.com -H 'cache-control: no-cache' -H 'content-type: application/json' 
+
+curl -X GET http://localhost:8080/api/user/test2@test.com -H 'cache-control: no-cache' -H 'content-type: application/json' 
+
+-------- 뉴스등록 --------
+curl -X POST http://localhost:8080/api/news/register -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{ "createEmail":"test2@test.com", "title":"제목", "contents":"내용" }'
+
+-------- 뉴스보기 --------
+curl -X GET http://localhost:8080/api/news/test@test.com -H 'cache-control: no-cache' -H 'content-type: application/json' 
+```

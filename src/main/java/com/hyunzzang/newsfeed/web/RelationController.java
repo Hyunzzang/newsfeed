@@ -23,12 +23,12 @@ public class RelationController {
   }
 
   @PostMapping("/follow")
-  public ResponseEntity.BodyBuilder follow(@RequestBody FollowRequest followRequest) {
+  public ResponseEntity<String> follow(@RequestBody FollowRequest followRequest) {
     log.info(":: follow ::");
     // todo: request 유효성 검증은 시간이 되면~
 
     relationService.follow(followRequest);
 
-    return ResponseEntity.ok();
+    return ResponseEntity.ok("OK");
   }
 }
