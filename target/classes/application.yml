@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: newsfeed
+    profiles: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./newsfeed_db;AUTO_SERVER=TRUE
+    username: news
+    password: 123456
+  h2:
+    console:
+      enabled: true
+      path: /newsfeed_db
+  redis:
+    host: localhost
+    port: 6379
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.springframework: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO
+    com.hyunzzang.financial.house: DEBUG
